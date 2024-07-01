@@ -34,9 +34,6 @@ char & String::CharacterAt(size_t _index)
 
 const char & String::CharacterAt(size_t _index) const
 {
-   if (_index >= length) {
-      throw std::out_of_range("Index out of range");
-   }
    return charDataVariab[_index];
 }
 
@@ -76,7 +73,8 @@ const char * String::CStr() const
 
 String & String::ToLower()
 {
-   for (size_t i = 0; i < length; ++i) {
+   for (size_t i = 0; i < length; ++i)
+   {
       charDataVariab[i] = std::tolower(charDataVariab[i]);
    }
    return *this;
@@ -84,7 +82,8 @@ String & String::ToLower()
 
 String & String::ToUpper()
 {
-   for (size_t i = 0; i < length; ++i) {
+   for (size_t i = 0; i < length; ++i)
+   {
       charDataVariab[i] = std::toupper(charDataVariab[i]);
    }
    return *this;
@@ -103,11 +102,13 @@ size_t String::Find(const String &_str)
 
 size_t String::Find(size_t _startIndex, const String &_str)
 {
-   if (_startIndex >= length) {
+   if (_startIndex >= length)
+   {
       return std::string::npos;
    }
    const char* found = std::strstr(charDataVariab + _startIndex, _str.charDataVariab);
-   if (found) {
+   if (found)
+   {
       return found - charDataVariab;
    }
    return std::string::npos;
@@ -152,21 +153,6 @@ String & String::WriteToConsole()
 {
    std::cout << "String Name: " << (charDataVariab ? charDataVariab : "null") << std::endl;
    return *this;
-}
-
-bool String::operator==(const String &_other) {
-}
-
-bool String::operator!=(const String &_other) {
-}
-
-String & String::operator=(const String &_str) {
-}
-
-char & String::operator[](size_t _index) {
-}
-
-const char & String::operator[](size_t _index) const {
 }
 
 int main()
@@ -272,28 +258,59 @@ int main()
 
    // Finds location of the char character.
    std::cout << "Test Nine" << std::endl;
-   std::cout << "Find Test Start" << std::endl;
+   std::cout << "Find with 1 Argument Test Start" << std::endl;
    char *findThis= "l";
    size_t locationFoundIn = myStringClass.Find(findThis);
    // First checks if letter to find is out of range
-   if (locationFoundIn > myStringClass.Length() || locationFoundIn <= 0 )
+   if (locationFoundIn > myStringClass.Length() || locationFoundIn <= 0)
    {
       std::cout << findThis << " <- This is not in " << myStringClass.CStr() << std::endl;
-      std::cout << "Find Test Failed" << std::endl;
+      std::cout << "Find with 1 Argument Test Failed" << std::endl;
       std::cout << "----------------------" << std::endl;
    }
    else
          {
             std::cout << "Found " << findThis << " at index " << locationFoundIn << " of Char " << std::endl;
-            std::cout << "Find Test Complete" << std::endl;
+            std::cout << "Find with 1 Argument Test Complete" << std::endl;
             std::cout << "----------------------" << std::endl;
          }
 
    // removes char from memory.
    --findThis;
 
-   // Replaces Char with Another
+   // Finds location of the char character using indexNumber.
+   char *charToFindInChar = "x";
+   int thisIndexNum = 3;
+   locationFoundIn = myStringClass.Find(charToFindInChar);
+
    std::cout << "Test Ten" << std::endl;
+   std::cout << "Find with 2 Arguments Test Start" << std::endl;
+   // First checks if index is out of range
+   if (thisIndexNum >= myStringClass.Length())
+   {
+      std::cout << thisIndexNum << " <- This is out of Range" << std::endl;
+      std::cout << "Find with 2 Arguments Test Failed" << std::endl;
+      std::cout << "----------------------" << std::endl;
+   }
+   // Second check if the char even exists in the charDataVariab variable.
+   else if (locationFoundIn > myStringClass.Length() || locationFoundIn <= 0)
+   {
+      std::cout << charToFindInChar << " <- This is out of Range" << std::endl;
+      std::cout << "Find with 2 Arguments Failed" << std::endl;
+      std::cout << "----------------------" << std::endl;
+   }
+   // Finally gives where its located if it reaches this far.
+   else
+   {
+      std::cout << "Found " << charToFindInChar << " at index " << myStringClass.Find(thisIndexNum,charToFindInChar) << std::endl;
+      std::cout << "Find with 2 Arguments Completed" << std::endl;
+      std::cout << "----------------------" << std::endl;
+   }
+
+   --charToFindInChar;
+
+   // Replaces Char with Another
+   std::cout << "Test Eleven" << std::endl;
    std::cout << "Replace Test Start" << std::endl;
    char *replacementChar = "Alex";
    myStringClass.Replace(myStringClass.CStr(), replacementChar);
@@ -304,8 +321,22 @@ int main()
    // removes char from memory.
    --replacementChar;
 
+   // Read From Console Test.
+   std::cout << "Test Twelve" << std::endl;
+   std::cout << "Read From Console Test Start" << std::endl;
+   std::cout << "Type the replacement string: ";
+   myStringClass.Replace(myStringClass.CStr(), myStringClass.ReadFromConsole());
+   std::cout <<"Result Of Replacement: " << myStringClass.CStr() << std::endl;
+   std::cout << "Read From Console Test Complete" << std::endl;
+   std::cout << "----------------------" << std::endl;
 
+   //Write To Console Final Test.
+   std::cout << "Test Thirteen" << std::endl;
+   std::cout << "Write To Console Test Start" << std::endl;
+   myStringClass.WriteToConsole();
+   std::cout << "Write To Console Test Complete" << std::endl;
+   std::cout << "----------------------" << std::endl;
 
-   // Starts again from line 0 in the .cpp script.
+   // Successful end of CPP Script it sets the int main to 0.
    return 0;
 }
