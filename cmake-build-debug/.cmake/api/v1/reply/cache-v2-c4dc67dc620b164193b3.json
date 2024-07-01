@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/AIE Folders/untitled/cmake-build-debug"
+			"value" : "d:/AIE Folders/String_AIE_Assignment/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/AIE Folders/untitled/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "D:/AIE Folders/String_AIE_Assignment/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/AIE Folders/untitled"
+			"value" : "D:/AIE Folders/String_AIE_Assignment"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -687,7 +687,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/ninja/win/x64/ninja.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2024.1.4/bin/ninja/win/x64/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1291,7 +1291,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/AIE Folders/untitled/cmake-build-debug"
+			"value" : "D:/AIE Folders/String_AIE_Assignment/cmake-build-debug"
 		},
 		{
 			"name" : "untitled_IS_TOP_LEVEL",
@@ -1315,7 +1315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/AIE Folders/untitled"
+			"value" : "D:/AIE Folders/String_AIE_Assignment"
 		}
 	],
 	"kind" : "cache",

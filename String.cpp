@@ -1,44 +1,41 @@
 #include <iostream>
 #include "String.h"
+#include <cstring>
 
 #include <string.h>
 
-int main() {
-}
-String::String() {
-
-
-
-    int lengthChar = strlen(name);
-
-    std::cout << "\nMy Name Is: " << name <<"\n"<< "My Name Is This Long: " << lengthChar << "\n\n";
-    std::cout << "What is your Name?: ";
-    std::cin >> theirName;
-
-
-    if (strcmp(name, theirName) == 0 ) {
-        std::cout <<"That is my name!. Choose another name \n";
-    }
-    else
-        std::cout << "Your Name is " << theirName << "\n";
+String::String() : charDataVariab(nullptr), length(0)
+{
+   std::cout << "String Name: " << (charDataVariab ? charDataVariab : "null") << std::endl;
 }
 
-String::String(const char *_str) {
-    char name[] = "Alex";
+String::String(const char *_str)
+{
+   length = std::strlen(_str);
+   charDataVariab = new char[length + 1];
+   std::strcpy(charDataVariab, _str);
 }
 
 String::String(const String &_other) {
-    char theirName[20];
+
 }
 
-String::~String() {
-    char theirName[20];
+String::~String()
+{
+   delete[] charDataVariab;
 }
 
-size_t String::Length() const {
+size_t String::Length() const
+{
+   return length;
 }
 
-char & String::CharacterAt(size_t _index) {
+char & String::CharacterAt(size_t _index)
+{
+   if (_index >= length) {
+      throw std::out_of_range("Index out of range");
+   }
+   return charDataVariab[_index];
 }
 
 const char & String::CharacterAt(size_t _index) const {
@@ -74,7 +71,10 @@ String & String::Replace(const String &_find, const String &_replace) {
 String & String::ReadFromConsole() {
 }
 
-String & String::WriteToConsole() {
+String & String::WriteToConsole()
+{
+   std::cout << charDataVariab << std::endl;
+   return *this;
 }
 
 bool String::operator==(const String &_other) {
@@ -90,4 +90,22 @@ char & String::operator[](size_t _index) {
 }
 
 const char & String::operator[](size_t _index) const {
+}
+
+int main()
+{
+   String myStringClass("Alex");
+   myStringClass.WriteToConsole();
+
+   std::cout << "Char Length: " << myStringClass.Length() << std::endl;
+   std::cout << "Char Length Test Complete" << std::endl;
+
+   try {
+      char& ch = myStringClass.CharacterAt(1);
+      std::cout << "Character at index 1: " << ch << std::endl;
+   } catch (const std::out_of_range& e) {
+      std::cerr << e.what() << std::endl;
+   }
+
+   return 0;
 }

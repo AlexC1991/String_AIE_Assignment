@@ -43,9 +43,8 @@ public:
 	const char& operator[](size_t _index) const;
 
 private:
-/*
-* Put your internal data structures and members here
-*/
+	char *charDataVariab;
+	size_t length;
 };
 
 #endif

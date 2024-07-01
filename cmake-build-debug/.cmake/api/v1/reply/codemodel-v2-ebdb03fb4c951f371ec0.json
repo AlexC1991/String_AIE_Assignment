@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/AIE Folders/untitled/cmake-build-debug",
-		"source" : "D:/AIE Folders/untitled"
+		"build" : "D:/AIE Folders/String_AIE_Assignment/cmake-build-debug",
+		"source" : "D:/AIE Folders/String_AIE_Assignment"
 	},
 	"version" : 
 	{
