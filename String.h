@@ -34,6 +34,8 @@ public:
 	String& ReadFromConsole();
 	String& WriteToConsole();
 
+	int LessThanOperator (const String& rhs) const;
+
 	bool operator==(const String& _other);
 	bool operator!=(const String& _other);
 

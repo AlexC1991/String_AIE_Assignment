@@ -155,6 +155,12 @@ String & String::WriteToConsole()
    return *this;
 }
 
+int String::LessThanOperator(const String& rhs) const
+{
+   // Return 1 (true) if this string is less than rhs, otherwise return 0 (false)
+   return std::strcmp(charDataVariab, rhs.charDataVariab) < 0 ? 1 : 0;
+}
+
 int main()
 {
    // Start of script.
@@ -217,6 +223,7 @@ int main()
    char *equalCharValue ="hAlexh";
    std::cout << "Test Five" << std::endl;
    std::cout << "EqualTo Test Start" << std::endl;
+
    if (myStringClass.EqualTo(equalCharValue))
    {
       std::cout << equalCharValue << " is equal to " << myStringClass.CStr() << std::endl;
@@ -330,12 +337,28 @@ int main()
    std::cout << "Read From Console Test Complete" << std::endl;
    std::cout << "----------------------" << std::endl;
 
-   //Write To Console Final Test.
+   //Write To Console Test.
    std::cout << "Test Thirteen" << std::endl;
    std::cout << "Write To Console Test Start" << std::endl;
    myStringClass.WriteToConsole();
    std::cout << "Write To Console Test Complete" << std::endl;
    std::cout << "----------------------" << std::endl;
+
+   //Compare current Char to a new Char and Sort it alphabetically.
+   std::cout << "Test Fourteen" << std::endl;
+   std::cout << "LessThanOperator Test Start" << std::endl;
+   if (myStringClass.LessThanOperator("greg"))
+   {
+      std::cout << myStringClass.CStr() << " comes before greg in the alphabet" << std::endl;
+      std::cout << "LessThanOperator Test Complete" << std::endl;
+      std::cout << "----------------------" << std::endl;
+   }
+   else
+   {
+      std::cout << myStringClass.CStr() << " comes after greg in the alphabet" << std::endl;
+      std::cout << "LessThanOperator Test Complete" << std::endl;
+      std::cout << "----------------------" << std::endl;
+   }
 
    // Successful end of CPP Script it sets the int main to 0.
    return 0;
