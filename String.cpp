@@ -5,74 +5,121 @@
 
 String::String(const char *_str)
 {
+   // Step 1: Calculate the length of the input C-string
    length = std::strlen(_str);
-   charDataVariab = new char[length + 1];
+
+   // Step 2: Allocate a new char array to hold the input C-string plus null terminator
+   charDataVariab = new char[length + 1]; // +1 for the null terminator
+
+   // Step 3: Copy the input C-string into the new char array
    std::strcpy(charDataVariab, _str);
 }
 
 String::String(const String &_other)
 {
+   // Step 1: Set the length of the current string to the length of the other string
    length = _other.length;
-   charDataVariab = new char[length + 1];
+
+   // Step 2: Allocate a new char array to hold the other string's data plus null terminator
+   charDataVariab = new char[length + 1]; // +1 for the null terminator
+
+   // Step 3: Copy the other string's data into the new char array
    std::strcpy(charDataVariab, _other.charDataVariab);
 }
 
 String::~String()
 {
+   // Delete the char array to free memory.
    delete[] charDataVariab;
 }
 
 size_t String::Length() const
 {
+   // Return the length of the string.
    return length;
 }
 
 char & String::CharacterAt(size_t _index)
 {
+   // Return a reference to the character at the specified index.
    return charDataVariab[_index];
 }
 
 const char & String::CharacterAt(size_t _index) const
 {
+   // Return a const reference to the character at the specified index.
    return charDataVariab[_index];
 }
 
 bool String::EqualTo(const String &_other) const
 {
+   // Compare the current string's char array with the other string's char array using std::strcmp, return true if equal.
    return std::strcmp(charDataVariab, _other.charDataVariab) == 0;
 }
 
 String & String::Append(const String &_str)
 {
+   // Step 1: Calculate the new length
    size_t newLength = length + _str.length;
-   char* newCharDataVariab = new char[newLength + 1];
+
+   // Step 2: Allocate new char array
+   char* newCharDataVariab = new char[newLength + 1]; // +1 for the null terminator
+
+   // Step 3: Copy current string data
    std::strcpy(newCharDataVariab, charDataVariab);
+
+   // Step 4: Concatenate new string data
    std::strcat(newCharDataVariab, _str.charDataVariab);
+
+   // Step 5: Delete old char array to free memory
    delete[] charDataVariab;
+
+   // Step 6: Point to the new array
    charDataVariab = newCharDataVariab;
+
+   // Step 7: Update length
    length = newLength;
+
+   // Step 8: Return reference to this object
    return *this;
 }
 
 String & String::Prepend(const String &_str)
 {
+   // Step 1: Calculate the new length of the combined strings
    size_t newLength = length + _str.length;
-   char* newCharDataVariab = new char[newLength + 1];
+
+   // Step 2: Allocate new char array to hold the combined string plus null terminator
+   char* newCharDataVariab = new char[newLength + 1]; // +1 for the null terminator
+
+   // Step 3: Copy the new string data into the new array
    std::strcpy(newCharDataVariab, _str.charDataVariab);
+
+   // Step 4: Concatenate the current string data to the new array
    std::strcat(newCharDataVariab, charDataVariab);
+
+   // Step 5: Delete the old char array to free memory
    delete[] charDataVariab;
+
+   // Step 6: Point to the new array
    charDataVariab = newCharDataVariab;
+
+   // Step 7: Update length to the new length
    length = newLength;
+
+   // Step 8: Return reference to this object
    return *this;
 }
 
 const char * String::CStr() const
 {
+   // Return a pointer to the character array representing the string.
    return charDataVariab;
 }
 
 String & String::ToLower()
 {
+   // Convert each character in the string to lowercase
    for (size_t i = 0; i < length; ++i)
    {
       charDataVariab[i] = std::tolower(charDataVariab[i]);
@@ -82,6 +129,7 @@ String & String::ToLower()
 
 String & String::ToUpper()
 {
+   // Convert each character in the string to uppercase.
    for (size_t i = 0; i < length; ++i)
    {
       charDataVariab[i] = std::toupper(charDataVariab[i]);
@@ -91,46 +139,76 @@ String & String::ToUpper()
 
 size_t String::Find(const String &_str)
 {
+   // Step 1: Use std::strstr to find the first occurrence of _str.charDataVariab in charDataVariab
    const char* found = std::strstr(charDataVariab, _str.charDataVariab);
+
+   // Step 2: If a match is found
    if (found)
    {
+      // Return the index of the found substring by subtracting the base pointer charDataVariab
       return found - charDataVariab;
    }
 
+   // Step 3: If no match is found, return std::string::npos
    return std::string::npos;
 }
 
 size_t String::Find(size_t _startIndex, const String &_str)
 {
+   // Step 1: Check if the start index is beyond the length of the current string
    if (_startIndex >= length)
    {
+      // If so, return npos to indicate no match found
       return std::string::npos;
    }
+
+   // Step 2: Use std::strstr to find the first occurrence of _str.charDataVariab in charDataVariab starting from _startIndex
    const char* found = std::strstr(charDataVariab + _startIndex, _str.charDataVariab);
+
+   // Step 3: If a match is found
    if (found)
    {
+      // Return the index of the found substring
       return found - charDataVariab;
    }
+
+   // Step 4: If no match is found, return npos
    return std::string::npos;
 }
 
 String & String::Replace(const String &_find, const String &_replace)
 {
+   // Step 1: Find the first occurrence of the substring _find
    size_t pos = Find(_find);
-   while (pos != static_cast<size_t>(-1))
+
+   // Step 2: Loop while the substring _find is found
+   while (pos != std::string::npos)
    {
-
+      // Step 3: Calculate the new length of the string after replacement
       size_t newLength = length - _find.length + _replace.length;
-      char* newCharData = new char[newLength + 1];
 
+      // Step 4: Allocate a new char array to hold the modified string plus null terminator
+      char* newCharData = new char[newLength + 1]; // +1 for the null terminator
+
+      // Step 5: Copy the part of the original string before the found position
       std::strncpy(newCharData, charDataVariab, pos);
+
+      // Step 6: Copy the replacement string into the new array at the found position
       std::strcpy(newCharData + pos, _replace.CStr());
+
+      // Step 7: Copy the part of the original string after the found substring
       std::strcpy(newCharData + pos + _replace.length, charDataVariab + pos + _find.length);
 
+      // Step 8: Delete the old char array to free memory
       delete[] charDataVariab;
+
+      // Step 9: Point to the new array
       charDataVariab = newCharData;
+
+      // Step 10: Update length to the new length
       length = newLength;
 
+      // Step 11: Find the next occurrence of the substring _find starting after the last replacement
       pos = Find(pos + _replace.length, _find);
    }
    return *this;
@@ -138,19 +216,31 @@ String & String::Replace(const String &_find, const String &_replace)
 
 String & String::ReadFromConsole()
 {
-   char buffer[1024];
-   std::cin.getline(buffer, 1024);
+   // Step 1: Create a buffer to hold input data from the user
+   char buffer[100];
 
+   // Step 2: Use std::cin.getline to read a line of input into the buffer
+   std::cin.getline(buffer, 100);
+
+   // Step 3: Delete the old char array to free memory
    delete[] charDataVariab;
+
+   // Step 4: Calculate the length of the input string
    length = std::strlen(buffer);
-   charDataVariab = new char[length + 1];
+
+   // Step 5: Allocate a new char array to hold the input string plus null terminator
+   charDataVariab = new char[length + 1]; // +1 for the null terminator
+
+   // Step 6: Copy the input string from the buffer to the new char array
    std::strcpy(charDataVariab, buffer);
 
+   // Step 7: Return reference to this object
    return *this;
 }
 
 String & String::WriteToConsole()
 {
+   // Output the string data to the console
    std::cout << "String Name: " << (charDataVariab ? charDataVariab : "null") << std::endl;
    return *this;
 }
