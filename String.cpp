@@ -450,6 +450,10 @@ int main()
       std::cout << "----------------------" << std::endl;
    }
 
+   // This statement is to pause the program
+   std::cout << "Press Enter to exit...";
+   std::cin.get(); // Wait for user to press Enter
+
    // Successful end of CPP Script it sets the int main to 0.
    return 0;
 }
