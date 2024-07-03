@@ -1,7 +1,6 @@
 #include <iostream>
 #include "String.h"
 #include <ctime>
-#include "String.cpp"
 
 String &String::CheckingScore()
 {
@@ -26,9 +25,7 @@ String &String::PrintingTD()
     return *this;
 }
 
-
-
-int main()
+String &String::StringUnitTesting()
 {
     String myStringClass("Alex");
 
@@ -46,6 +43,5 @@ int main()
     /*std::cout << "Press Enter to exit...";
     std::cin.get(); // Wait for user to press Enter*/
 
-    // Successful end of CPP Script it sets the int main to 0.
-    return 0;
+    return *this;
 }

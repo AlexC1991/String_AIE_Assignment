@@ -57,6 +57,8 @@ public:
 		int baseScore;
 	};
 
+	String& StringUnitTesting();
+
 
 private:
 	char *charDataVariab;

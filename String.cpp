@@ -254,11 +254,13 @@ int String::LessThanOperator(const String& rhs) const
 
 int main()
 {
+   String myStringClass("Alex");
+   myStringClass.StringUnitTesting();
+
    // Start of script.
    std::cout << "-----------" << std::endl;
    std::cout << "Start of Script" << std::endl;
    std::cout << "-----------" << std::endl;
-   String myStringClass("Alex");
    myStringClass.WriteToConsole();
    std::cout << "----------------------" << std::endl;
 
