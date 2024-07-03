@@ -5,6 +5,9 @@
 class String
 {
 public:
+	int passed = 0;
+	int failed = 0;
+
 	String();
 	String(const char* _str);
 
@@ -43,6 +46,17 @@ public:
 
 	char& operator[](size_t _index);
 	const char& operator[](size_t _index) const;
+
+	String& CheckingScore();
+
+	String& PrintingTD();
+
+	struct testingResults
+	{
+		bool validChecker;
+		int baseScore;
+	};
+
 
 private:
 	char *charDataVariab;

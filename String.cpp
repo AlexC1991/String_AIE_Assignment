@@ -1,7 +1,6 @@
 #include <iostream>
 #include "String.h"
 #include <cstring>
-#include <string.h>
 
 String::String(const char *_str)
 {
@@ -250,6 +249,8 @@ int String::LessThanOperator(const String& rhs) const
    // Return 1 (true) if this string is less than rhs, otherwise return 0 (false)
    return std::strcmp(charDataVariab, rhs.charDataVariab) < 0 ? 1 : 0;
 }
+
+
 
 int main()
 {
