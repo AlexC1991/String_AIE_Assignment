@@ -1,8 +1,7 @@
 #include <iostream>
 #include "String.h"
-#include <cstring>
-#include <string.h>
 #include <ctime>
+#include "String.cpp"
 
 String &String::CheckingScore()
 {
