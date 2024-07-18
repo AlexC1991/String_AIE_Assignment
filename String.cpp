@@ -250,8 +250,6 @@ int String::LessThanOperator(const String& rhs) const
    return std::strcmp(charDataVariab, rhs.charDataVariab) < 0 ? 1 : 0;
 }
 
-
-
 int main()
 {
    String myStringClass("Alex");

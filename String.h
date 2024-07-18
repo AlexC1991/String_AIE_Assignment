@@ -47,17 +47,19 @@ public:
 	char& operator[](size_t _index);
 	const char& operator[](size_t _index) const;
 
-	String& CheckingScore();
 
+     // Testing Function to Print Date & Time.
 	String& PrintingTD();
-
+     // Testing Struct to add to my functions.
 	struct testingResults
 	{
-		bool validChecker;
-		int baseScore;
+		bool validChecker; // Checks Yes Or No For Test Pass.
+		int baseScore; // Makes an Int as a Score For The Testing.
 	};
-
+     // Main Testing Execution Function.
 	String& StringUnitTesting();
+
+	String& TakeInTextFile();
 
 
 private:

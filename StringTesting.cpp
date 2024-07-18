@@ -1,18 +1,7 @@
 #include <iostream>
 #include "String.h"
 #include <ctime>
-
-String &String::CheckingScore()
-{
-    testingResults testing_results;
-    testing_results.baseScore = 40;
-
-    if (testing_results.baseScore >= 50 && testing_results.baseScore < 101)
-        std::cout << "Testing Passed" << std::endl;
-    else
-        std::cout << "Testing Failed" << std::endl;
-    return *this;
-}
+#include <cstring>
 
 String &String::PrintingTD()
 {
@@ -30,10 +19,7 @@ String &String::StringUnitTesting()
     String myStringClass("Alex");
 
     std::cout << "My Score Results: ";
-    myStringClass.CheckingScore();
     myStringClass.PrintingTD();
-
-
 
     std::cout << "Tests Passed: " << "[" << myStringClass.passed << "/14]" << std::endl;
     std::cout << "Tests Failed: " << "[" << myStringClass.failed << "/14]" << std::endl;
@@ -45,3 +31,4 @@ String &String::StringUnitTesting()
 
     return *this;
 }
+
